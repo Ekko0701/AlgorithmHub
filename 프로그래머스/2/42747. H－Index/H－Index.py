@@ -1,12 +1,15 @@
 def solution(citations):
-    answer = 0
+    citations.sort()
+    left = 0
+    right = len(citations) - 1
+    n = len(citations)
     
-    citations.sort(reverse=True)
-    
-    for i in range(len(citations)):
-        if citations[i] >= i + 1:
-            answer = i + 1
+    while left <= right:
+        mid = (left + right) // 2
+        h = n - mid  
+        if citations[mid] >= h:
+            right = mid - 1
         else:
-            break
-    
-    return answer
+            left = mid + 1
+
+    return n - left
