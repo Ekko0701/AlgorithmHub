@@ -1,15 +1,16 @@
+from collections import Counter
+
 def solution(s):
-    answer = []
-    s = s[2:-2]
-    parts = s.split("},{")
-
-    sets = [list(map(int, part.replace(" ", "").split(','))) for part in parts]
-    sets.sort(key=len)
-
-    for subset in sets:
-        for num in subset:
-            if num not in answer:
-                answer.append(num)
-                break
-
-    return answer
+    numbers = []
+    number = ""
+    for char in s:
+        if char.isdigit():
+            number += char
+        else:
+            if number:
+                numbers.append(number)
+                number = ""
+    if number:
+        numbers.append(number)
+    count = Counter(numbers)
+    return list(map(int, [k for k, v in sorted(count.items(), key=lambda x: x[1], reverse=True)]))
