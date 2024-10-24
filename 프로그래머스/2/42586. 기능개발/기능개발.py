@@ -1,15 +1,21 @@
-import math
+from collections import deque
 
 def solution(progresses, speeds):
     answer = []
-    days = [math.ceil((100-p) / s) for p, s in zip(progresses, speeds)]
-
-    index = 0 
-
-    for i in range(len(days)) :
-        if days[index] < days[i] :
-            answer.append(i - index)    
-            index = i               
-    answer.append(len(days) - index) 
-
+    queue = deque(zip(progresses, speeds))
+    
+    while queue:
+        # 배포일 수를 계산
+        day = 0
+        while queue[0][0] + queue[0][1] * day < 100:
+            day += 1
+        
+        # 배포할 수 있는 작업 수 계산
+        count = 0
+        while queue and queue[0][0] + queue[0][1] * day >= 100:
+            queue.popleft()
+            count += 1
+        
+        answer.append(count)
+    
     return answer
