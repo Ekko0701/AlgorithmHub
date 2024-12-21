@@ -3,27 +3,17 @@ def solution(skill, skill_trees):
     
 
     for skill_tree in skill_trees:
-        tree_stack = list(skill)
-        tree_stack.reverse() 
-        
-        skill_stack = list(skill_tree)
-        skill_stack.reverse()
-        print(skill_stack)
-        for x in range(len(skill_stack) -1, -1, -1):
-
-            if skill_stack[x] in tree_stack:
-                if skill_stack[x] == tree_stack[-1]:
-                    skill_stack.pop()
-                    tree_stack.pop()
+        stack = list(skill)
+        stack.reverse()
+        count = 0
+    
+        for element in skill_tree:
+            if stack and stack[-1] == element:
+                stack.pop()
+                count += 1
+                if count == len(skill):
+                    print(skill_tree)
+                    answer += 1
                 else:
-                    # 틀린 경우
-                    break
-            else:
-                skill_stack.pop()
-                
-            if len(skill_stack) == 0:
-                answer += 1
-                
-        
-        
+                    continue
     return answer
