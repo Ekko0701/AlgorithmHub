@@ -2,17 +2,8 @@ from typing import List
 
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
-        def dfs(index, path):
-            if len(path) == len(digits):
-                result.append(path)
-                return
-
-            for i in range(index, len(digits)):
-                for j in dic[digits[i]]:
-                    dfs(i + 1, path + j)
-        
-        # 숫자와 문자 맵핑 설정
-        dic = {
+        res = []
+        digitToChar = {
             "2": "abc",
             "3": "def",
             "4": "ghi",
@@ -23,12 +14,14 @@ class Solution:
             "9": "wxyz"
         }
 
-        result = []
+        def backtrack(i, curStr):
+            if len(curStr) == len(digits):
+                res.append(curStr)
+                return
+            for c in digitToChar[digits[i]]:
+                backtrack(i+1, curStr + c)
 
-        if not digits:
-            return []
-        dfs(0, "")
-        
-        return result
+        if digits:
+            backtrack(0,"")
 
-        
+        return res
