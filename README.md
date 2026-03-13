@@ -15,4 +15,12 @@ This is a auto push repository for Baekjoon Online Judge created with [BaekjoonH
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0560-subarray-sum-equals-k](https://github.com/Ekko0701/AlgorithmHub/tree/main/0560-subarray-sum-equals-k/) | Medium |
+## Two Pointers
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0344-reverse-string](https://github.com/Ekko0701/AlgorithmHub/tree/main/0344-reverse-string/) | Easy |
+## String
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0344-reverse-string](https://github.com/Ekko0701/AlgorithmHub/tree/main/0344-reverse-string/) | Easy |
 <!---LeetCode Topics End-->
